@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To My One and Only ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" id="intro">
+    <div class="slide-text big-text">Hi babby,<br>I'm your Kannaya 💕</div>
+    <button onclick="startSlides()">Take My Heart 💖</button>
+  </div>
+
+  <div class="container hidden" id="slideshow">
+    <div class="slide-text" id="text"></div>
+    <button onclick="nextSlide()" id="nextBtn">Next Whisper ➜</button>
+  </div>
+
+  <div class="container hidden" id="final-accept">
+    <div class="slide-text">
+      Thank you for choosing me, Kannamma 💖<br><br>
+      I promise to love you like no one ever could. You’re safe in my heart, forever.
+    </div>
+  </div>
+
+  <div class="container hidden" id="final-reject">
+    <div class="slide-text">
+      Maybe I’m not enough for you… but I gave you my whole heart.<br><br>
+      If this is goodbye, just know — you were my everything.
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "Kannamma, I don’t know how to put this perfectly, but I hope you feel my love through these words.",
+      "You’re not just my girl. You’re the one I dream about, the one I plan a future with, and the one who makes my heart feel full.",
+      "When you talk to other boys and call them friends, I try to stay calm, but inside I feel this ache I can't explain.",
+      "It’s not that I don’t trust you, it's just that I love you so much that I get scared of losing your attention, your time, your heart.",
+      "I want to be the one who holds you, makes you laugh, and understands your silence. I want to be enough for you.",
+      "Every day, I replay our memories like they’re the most precious movie in my mind. And they are.",
+      "When I see you smile because of me, it makes my whole day glow. When I see you smile for someone else... it breaks something in me.",
+      "I crave your closeness, your eyes, your voice — not because I’m needy, but because they feel like home.",
+      "Sometimes I act strong, but inside I’m this soft boy who's madly, deeply, hopelessly in love with you.",
+      "All I ever wanted was to be your safe space, your person, the one you never have to hide anything from.",
+      "I don’t want perfection. I just want *us*. Real, raw, full of love and fights and making up again.",
+      "You’re the only person who can break me, but I still choose you. Again and again.",
+      "Please don’t take my presence for granted. I’m rare, and I’m yours.",
+      "So, Kannamma, here I am. I’ve opened my heart. Now, it’s your turn to choose... 💔 or ❤️"
+    ];
+
+    const buttonLabels = [
+      "Keep Reading 💌", "Feel Me 🥺", "Next Whisper ➜", "Hear Me Out 💭", "Another Truth 💘",
+      "Stay With Me 💞", "From My Soul 🫀", "Understand Me 😔", "Inside Me 😢", "Hold This 💝", 
+      "Keep Loving 🫶", "Don’t Let Go 🥹", "Rare Love 🌸", "Choose My Heart 💗"
+    ];
+
+    let index = 0;
+    const textElement = document.getElementById("text");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function startSlides() {
+      document.getElementById("intro").classList.add("hidden");
+      document.getElementById("slideshow").classList.remove("hidden");
+      nextSlide();
+    }
+
+    function nextSlide() {
+      if (index < messages.length - 1) {
+        textElement.innerText = messages[index];
+        nextBtn.innerText = buttonLabels[index] || "Next ➜";
+        index++;
+      } else if (index === messages.length - 1) {
+        textElement.innerText = messages[index];
+        nextBtn.innerText = "Make Your Choice 💗";
+        index++;
+      } else {
+        nextBtn.remove();
+        const btns = document.createElement('div');
+        btns.innerHTML = `
+          <button onclick="acceptLove()">Yes, I accept your love 💖</button>
+          <br><br>
+          <button onclick="rejectLove()">No, I reject it 💔</button>
+        `;
+        textElement.appendChild(btns);
+      }
+    }
+
+    function acceptLove() {
+      document.getElementById("slideshow").classList.add("hidden");
+      document.getElementById("final-accept").classList.remove("hidden");
+    }
+
+    function rejectLove() {
+      document.getElementById("slideshow").classList.add("hidden");
+      document.getElementById("final-reject").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
